@@ -1,0 +1,33 @@
+@host = http://localhost:5029
+
+###
+
+GET {{host}}/health
+Accept: application/json
+
+###
+
+POST {{host}}/api/logs/ingest
+Content-Type: application/json
+
+{
+  "serverId": "Server-1",
+  "level": "ERROR",
+  "message": "Disk full error",
+  "source": "StorageService"
+}
+
+###
+
+GET {{host}}/api/logs
+Accept: application/json
+
+###
+
+GET {{host}}/api/logs/stats
+Accept: application/json
+
+###
+
+GET {{host}}/api/anomalies
+Accept: application/json
