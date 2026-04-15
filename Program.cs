@@ -2,7 +2,8 @@ using LogPortal.API.Data;
 using LogPortal.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://0.0.0.0:{port}");
 
 var mongoSettings = builder.Configuration
     .GetSection("MongoDbSettings")
